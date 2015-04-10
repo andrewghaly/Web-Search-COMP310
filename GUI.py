@@ -12,7 +12,7 @@ title = master.title("Web Crawl")
 
 def call():
     #run(entry) where entry is link entered as paramater to WebScrape
-    run()
+    run(entry.get())
 
 button = Button(master, text="GO", command=call)
 

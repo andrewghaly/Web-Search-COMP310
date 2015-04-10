@@ -1,7 +1,8 @@
 from bs4 import BeautifulSoup
 import urllib2
 import re
-def run():
+
+def run(start_link):
     urls = []
     history = set()
 
@@ -21,7 +22,7 @@ def run():
         except Exception:
             print ""
 
-    scan_link("http://mileycyrus.com")
+    scan_link(start_link)
 
     while urls:
         for x in urls:
