@@ -11,6 +11,7 @@ def run(start_link):
 
     def scan_link(link):
         try:
+            #link = "http://" + link
             site_load = urllib2.urlopen(link)
             print "\nScraping link: ", link.split("http://")[1]
 
@@ -22,7 +23,7 @@ def run(start_link):
         except Exception:
             print ""
 
-    scan_link(start_link)
+    scan_link("http://" + start_link)
 
     while urls:
         for x in urls:
