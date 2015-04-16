@@ -2,12 +2,10 @@ from bs4 import BeautifulSoup
 import urllib2
 import re
 
+
 def run(start_link):
     urls = []
     history = set()
-
-    set_of_links = set()
-
 
     def scan_link(link):
         try:
@@ -17,18 +15,17 @@ def run(start_link):
 
             current_link = BeautifulSoup(site_load)
             print current_link.html.head.title.string
-            for link in current_link.findAll('a'):
+            for link in current_link.findAll('a', attrs={'href': re.compile("^http://")}):
                 if link.get('href') not in urls:
                     urls.append(link.get('href'))
         except Exception:
-            print ""
+            print "Link Error"
 
     scan_link("http://" + start_link)
 
     while urls:
         for x in urls:
             print x
-            #print len(urls)
 
             print len(urls), "URLs in stack"
             print len(history), "URLs in history"
